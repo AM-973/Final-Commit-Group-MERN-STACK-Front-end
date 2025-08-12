@@ -1,5 +1,6 @@
 import './App.css'
 import NavBar from './components/NavBar/NavBar'
+import Footer from './components/Footer/Footer'
 import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import { Route, Routes, Navigate } from 'react-router-dom'
@@ -41,7 +42,7 @@ const App = () => {
   }
 
   return (
-    <>
+    <div className="app-container">
       <NavBar user={user} handleSignOut={handleSignOut} />
       <div className="main-content">
         <Routes>
@@ -57,7 +58,8 @@ const App = () => {
             <Route path='*' element={<h1>404 - Page Not Found</h1>} />
         </Routes>
       </div>
-    </>
+      <Footer />
+    </div>
 
   )
 }
