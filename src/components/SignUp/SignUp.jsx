@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import './SignUp.css'
 
 const SignUp = (props) => {
   const navigate = useNavigate()
@@ -13,7 +14,6 @@ const SignUp = (props) => {
   const [formData, setFormData] = useState(initialState)
   const [error, setError] = useState(null)
 
-
   useEffect(() => {
     if (props.user) {
       navigate('/')
@@ -24,16 +24,12 @@ const SignUp = (props) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
   }
 
-  // made this function asynchronous
   const handleSubmit = async (evt) => {
     evt.preventDefault()  
-    // saved the return as "result"
     const result = await props.handleSignUp(formData)
-    // if sign up is succssful, navigate to home
     if (result.success){
       navigate('/')
     } else {
-      // otherwise, set the error message state 
       setError(result.message)
     }
   }
@@ -45,23 +41,56 @@ const SignUp = (props) => {
   }
 
   return (
-    <main>
-      <h1>Sign up Form</h1>
-      {/* add error message display to form */}
-      {error}
-      <form onSubmit={handleSubmit}>
-        <label>Username:</label>
-        <input type="text" name='username' onChange={handleChange} />
-        <br />
-        <label>Password:</label>
-        <input type="password" name='password' onChange={handleChange} />
-        <br />
-        <label>Confirm Password:</label>
-        <input type="password" name="passwordConf" onChange={handleChange} />
-        <br />
-        <button type="submit" disabled={formIsInvalid}>Sign up</button>
-      </form>
-    </main>
+    <div className="signup-container">
+      <div className="signup-form">
+        <h1 className="signup-title">Create Your Account</h1>
+        <p className="signup-subtitle">
+          Already have an account? <Link to="/sign-in" className="login-link">Log in</Link>
+        </p>
+        
+        {error && <div className="error-message">{error}</div>}
+        
+        <form onSubmit={handleSubmit} className="signup-form-content">
+          <div className="input-group">
+            <input 
+              type="text" 
+              name='username' 
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleChange} 
+              className="signup-input"
+              required
+            />
+          </div>
+          
+          <div className="input-group">
+            <input 
+              type="password" 
+              name='password' 
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange} 
+              className="signup-input"
+              required
+            />
+          </div>
+          
+          <div className="input-group">
+            <input 
+              type="password" 
+              name="passwordConf" 
+              placeholder="Confirm Password"
+              value={formData.passwordConf}
+              onChange={handleChange} 
+              className="signup-input"
+              required
+            />
+          </div>
+          
+          <button type="submit" disabled={formIsInvalid} className="signup-button">Sign up</button>
+        </form>
+      </div>
+    </div>
   )
 }
 
