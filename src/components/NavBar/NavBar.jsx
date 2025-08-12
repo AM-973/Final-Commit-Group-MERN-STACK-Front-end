@@ -1,21 +1,38 @@
 import { Link } from 'react-router-dom'
+import './NavBar.css'
 
 const NavBar = (props) => {
   return (
-    <div className="w3-bar w3-black w3-top">
-      <Link to="/" className="w3-bar-item w3-button">Home</Link>
-      {props.user ? (
-        <>
-          <span className="w3-bar-item">Welcome {props.user.username}</span>
-          <Link to="/" onClick={props.handleSignOut} className="w3-bar-item w3-button">Sign Out</Link>
-        </>
-      ) : (
-        <>
-          <Link to="/sign-in" className="w3-bar-item w3-button">Sign In</Link>
-          <Link to="/sign-up" className="w3-bar-item w3-button">Sign Up</Link>
-        </>
-      )}
-    </div>
+    <nav className="navbar">
+      <div className="navbar-container">
+        <Link to="/" className="navbar-brand">
+          Tickets
+        </Link>
+        
+        <div className="navbar-menu">
+          <Link to="/" className="navbar-item">Home</Link>
+          
+          {props.user ? (
+            <>
+              <span className="navbar-welcome">
+                Welcome, {props.user.username}!
+              </span>
+              <button 
+                onClick={props.handleSignOut} 
+                className="navbar-item navbar-button"
+              >
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/sign-in" className="navbar-item">Sign In</Link>
+              <Link to="/sign-up" className="navbar-item navbar-signup">Sign Up</Link>
+            </>
+          )}
+        </div>
+      </div>
+    </nav>
   )
 }
 
