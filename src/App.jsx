@@ -21,7 +21,6 @@ const App = () => {
 const navigate = useNavigate();
 
   const initialState = authService.getUser()
-
   const [user, setUser] = useState(initialState)
   const [movies, setMovies] = useState([])
 
@@ -93,6 +92,7 @@ const navigate = useNavigate();
   return (
     <>
       <NavBar user={user} handleSignOut={handleSignOut} />
+
       <Routes>
           {user ? (
             // Protected Routes
@@ -116,7 +116,6 @@ const navigate = useNavigate();
           <Route path='*' element={<h1>404 PAGE NOT FOUND</h1>} />
       </Routes>
     </>
-
   )
 }
 
