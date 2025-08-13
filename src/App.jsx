@@ -1,5 +1,6 @@
-import './App.css'
+// Removed App.css in favor of component-specific CSS modules
 import NavBar from './components/NavBar/NavBar'
+import Footer from './components/Footer/Footer'
 import SignUp from './components/SignUp/SignUp'
 import SignIn from './components/SignIn/SignIn'
 import MovieList from './components/MovieList/MovieList'
@@ -119,6 +120,7 @@ const navigate = useNavigate();
           <Route path='/movies/:movieId' element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />
           <Route path='*' element={<h1>404 PAGE NOT FOUND</h1>} />
       </Routes>
+      <Footer />
     </>
 
   )
