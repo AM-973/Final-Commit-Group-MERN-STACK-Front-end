@@ -1,0 +1,50 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  
+  .container * {
+    margin: 0;
+  }
+  
+  .container div {
+    margin: 0 !important;
+  }
+  
+  .container > img {
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+    margin-right: 12px;
+    border-radius: 50%;
+    background-color: var(--background);
+  }
+  
+  .container section > p {
+    opacity: 0.75;
+    line-height: 1;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 2px;
+  }
+  
+  .container div p {
+    line-height: 0.8;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 1px;
+  }
+  
+  .container section {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .container section img {
+    opacity: 0.5;
+    width: 14px;
+    height: 14px;
+    background: none;
+    margin: 0 2px 0 -2px;
+  }

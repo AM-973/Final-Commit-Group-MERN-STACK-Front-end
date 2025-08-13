@@ -1,5 +1,7 @@
-import { Link } from 'react-router-dom';
-import './NavBar.css';
+import { Link } from 'react-router-dom'
+import styles from './NavBar.module.css';
+import Logo from '../../assets/images/logo.svg'
+
 
 const NavBar = (props) => {
   return (
@@ -8,7 +10,6 @@ const NavBar = (props) => {
         <Link to="/" className="navbar-brand">
           Tickets
         </Link>
-
         <div className="navbar-menu">
           <Link to="/" className="navbar-item">Home</Link>
 
