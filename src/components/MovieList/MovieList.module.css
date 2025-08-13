@@ -12,7 +12,7 @@
     grid-column: 1 / -1;
     text-align: center;
     margin-bottom: 20px;
-    color: var(--text-color);
+    color: white !important;
   }
   
   /* Media queries */

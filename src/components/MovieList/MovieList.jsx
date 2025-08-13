@@ -3,7 +3,6 @@ import styles from './MovieList.module.css';
 import Icon from '../Icon/Icon';
 import AuthorInfo from '../../components/AuthorInfo/AuthorInfo';
 
-// Temporary poster URLs for demonstration (remove when backend supports posters)
 const tempPosters = {
   "The Matrix23123": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
   "The matrix part 3": "https://m.media-amazon.com/images/M/MV5BYTZkODlkZjQtMmUzOS00YzFhLTlhZjMtZDEzNTA1YWY2NTMwXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg",
@@ -17,7 +16,6 @@ return (
   <main className={styles.container}>
     <h1>Movie List</h1>
     {props.movies.map((movie) => {
-      // Add temporary poster for demonstration
       const movieWithPoster = {
         ...movie,
         poster: movie.poster || tempPosters[movie.title] || null

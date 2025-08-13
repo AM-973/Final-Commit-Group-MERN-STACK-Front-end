@@ -1,58 +1,60 @@
-/* Ensure body & html take full height */
 html, body {
   height: 100%;
   margin: 0;
+  padding: 0;
 }
 
-/* Make the container stretch full height */
 .container {
+  min-height: 100vh; /* Full height of viewport */
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  min-height: 100vh;
+  background: url('../../assets/images/Watch-Free-Hero-2048x1152-1.webp') no-repeat center center / cover;
+  position: relative;
   color: white;
   font-family: 'Inter', sans-serif;
-  background: url('../../assets/images/Watch-Free-Hero-2048x1152-1.webp') no-repeat center center;
-  background-size: cover;
-  position: relative;
 }
 
-/* Overlay on top of background */
+/* Overlay for readability */
 .container::before {
   content: '';
   position: absolute;
-  inset: 0; /* top, right, bottom, left = 0 */
-  background: rgba(0, 0, 0, 0.5);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.5);
   z-index: 0;
 }
 
-/* Content sections above overlay */
-.splash, .about, .testimonial {
+.container section {
   position: relative;
-  z-index: 1;
-  width: 100%;
-  max-width: 800px;
-  margin: 2rem 0;
+  z-index: 1; /* Above overlay */
+  padding: 2rem;
 }
 
 .splash {
-  flex: 1;
+  flex: 1; /* Fills remaining space if content is small */
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  text-align: center;
 }
 
-/* Footer always at bottom */
+.about, .testimonial {
+  background: rgba(255,255,255,0.1);
+  border-radius: 8px;
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+}
+
 .footer {
-  background: rgba(0,0,0,0.7);
-  padding: 1rem;
-  font-size: 0.85rem;
-  color: #ccc;
-  text-align: center;
   position: relative;
   z-index: 1;
-  width: 100%;
-  margin-top: auto;
+  background: #131415;
+  color: rgb(220, 220, 220);
+  text-align: center;
+  padding: 1rem;
+  border-top: 1px solid rgb(220, 220, 220);
 }
