@@ -9,7 +9,6 @@ const Landing = () => {
     <>
       <main className={styles.container}>
         <section className={styles.splash}>
-          <img src={Logotype} alt="Movie booking platform" />
         </section>
 
         <section className={styles.about}>
