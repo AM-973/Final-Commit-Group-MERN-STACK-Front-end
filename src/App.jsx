@@ -12,6 +12,7 @@ import * as movieService from './services/movieService'
 import { useState, useEffect } from 'react'
 import Landing from './components/Landing/Landing';
 import Dashboard from './components/Dashboard/Dashboard';
+import AddMovie from './pages/AddMovie';
 
 
 const App = () => {
@@ -97,6 +98,9 @@ const navigate = useNavigate();
           {user ? (
             // Protected Routes
             <>
+            {user.isAdmin && (
+              <Route path='/add-movie' element={<AddMovie />} />
+            )}
               <Route path='/dashboard' element={<Dashboard user={user} />} />
               <Route path='/movies/new' element={<MovieForm handleAddMovie={handleAddMovie} />} />
               <Route path='/movies/:movieId/edit' element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />

@@ -20,8 +20,11 @@ const NavBar = (props) => {
           {props.user ? (
             <>
               {props.user.isAdmin && (
-                <Link to='/movies/new' className={styles['navbar-item']}>Add Movie</Link>
+                <Link to='/add-movie' className={styles['navbar-item']}>
+                  Add Movie
+                </Link>
               )}
+
               {props.user.username && (
                 <span className={styles['navbar-welcome']}>Welcome, {props.user.username}</span>
               )}

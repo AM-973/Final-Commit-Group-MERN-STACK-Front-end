@@ -1,0 +1,18 @@
+/* src/components/AdminComponents/Form.css */
+form {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+input {
+  padding: 8px;
+  font-size: 16px;
+  flex: 1;
+}
+
+button {
+  padding: 8px 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
