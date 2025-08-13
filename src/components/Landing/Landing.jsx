@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import styles from './Landing.module.css'
 import Stars from '../../assets/images/stars.svg'
-import CinemaCompany from '../../assets/images/cinemacompany.jpg'
+import CinemaCompany from '../../assets/images/cinemacompany.jpg.png'
 
 const Landing = () => {
   return (

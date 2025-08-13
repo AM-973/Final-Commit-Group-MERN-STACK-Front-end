@@ -132,8 +132,11 @@ const MovieDetails = (props) => {
           </div>
         )}
       </section>
+
+      <section style={{ padding: '20px' }}>
       
-      <hr/>
+      
+      
       <h2>Reviews</h2>
       {!movie.reviews?.length && <p>There are no reviews.</p>}
       {movie.reviews?.map((review) => {
@@ -152,16 +155,17 @@ const MovieDetails = (props) => {
             <p>Rating: {review.rating}/5</p>
             <p>Reviewer: {review.user.username}</p>
             </header>
-            
+                          
             <p>{review.comment}</p>
-            <hr/>
+           
 
           </article>
+          
           
         )
       })}
       <ReviewForm handleAddReview={handleAddReview} />
-      <hr/>
+    </section>
     </main>
   )
 }

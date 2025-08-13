@@ -14,7 +14,7 @@ import Create from '../../assets/images/create.svg';
 import Comments from '../../assets/images/comments.svg';
 import Calendar from '../../assets/images/calendar.svg';
 import Televison from '../../assets/images/television.svg';
-import CinemaCompany from '../../assets/images/cinemacompany.jpg';
+import CinemaCompany from '../../assets/images/cinemacompany.jpg.png';
 
 const Icon = ({ category }) => {
   const icons = {

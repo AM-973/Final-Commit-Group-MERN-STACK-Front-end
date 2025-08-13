@@ -101,6 +101,7 @@
   background-position: right 12px center;
   background-repeat: no-repeat;
   background-size: 16px 16px;
+  width: 100%;
   padding-right: var(--space-10);
 }
 
@@ -134,7 +135,7 @@
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
   transition: var(--transition-all);
-  width: 22%;
+  width: 25%;
   margin-top: var(--space-2);
 }
 
