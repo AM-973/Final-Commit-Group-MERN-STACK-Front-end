@@ -91,22 +91,28 @@ const deleteMovie = async (movieId) => {
 }
 
 const update = async (formData, movieId) => {
-    try{
-        const token = localStorage.getItem('token')
-        const res = await fetch(`${BASE_URL}/${movieId}`, {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`
-            },
-            body: JSON.stringify(formData)
-        })
-        const data = await res.json()
-        return data
+  try {
+    const token = localStorage.getItem('token')
+    const res = await fetch(`${BASE_URL}/${movieId}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${token}`
+      },
+      body: JSON.stringify(formData)
+    })
+    
+    if (!res.ok) {
+      const errorData = await res.json()
+      throw new Error(errorData.err || 'Failed to update movie')
     }
-    catch(err){
-        console.log(err)
-    }
+    
+    const data = await res.json()
+    return data
+  } catch (err) {
+    console.error('Update error:', err)
+    throw err
+  }
 }
 
 const deleteReview = async (movieId, reviewId) => {

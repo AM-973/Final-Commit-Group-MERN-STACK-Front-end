@@ -78,19 +78,40 @@ const MovieDetails = (props) => {
             )}
           </div>
           
-          <div className="movie-info">
-            <p className="movie-genre">{movie.genre?.toUpperCase() || 'MOVIE'}</p>
-            <h1 className="movie-title">{movie.title}</h1>
-            <div className="movie-meta">
-              <p><strong>Duration:</strong> {movie.duration || 'N/A'} minutes</p>
-              <p><strong>Rating:</strong> {movie.rating || 'Not Rated'}</p>
-              <p><strong>Release Date:</strong> {movie.releaseDate ? new Date(movie.releaseDate).toLocaleDateString() : 'TBA'}</p>
-            </div>
-            <div className="movie-description">
-              <h3>Description</h3>
-              <p>{movie.description || 'No description available.'}</p>
-            </div>
-          </div>
+<div className="movie-header">
+  <div className="movie-poster">
+    {movie.poster ? <img src={movie.poster} alt={movie.title} /> : <div className="poster-placeholder"><span>No Image</span></div>}
+  </div>
+
+  <div className="movie-info">
+    <p className="movie-genre">{movie.genre?.toUpperCase() || 'MOVIE'}</p>
+    <h1 className="movie-title">{movie.title}</h1>
+
+    <div className="movie-meta">
+      <p><strong>Duration:</strong> {movie.duration || 'N/A'} minutes</p>
+      <p><strong>Rating:</strong> {movie.rating || 'Not Rated'}</p>
+      <p><strong>Release Date:</strong> {movie.releaseDate ? new Date(movie.releaseDate).toLocaleDateString() : 'TBA'}</p>
+    </div>
+
+    {/* Add Edit/Delete Buttons */}
+    {props.user && (
+      <div className="movie-buttons">
+        <Link to={`/movies/${movie._id}/edit`}>
+          <button className="edit-button">Edit Movie</button>
+        </Link>
+        <button className="delete-button" onClick={() => props.handleDeleteMovie(movie._id)}>
+          Delete Movie
+        </button>
+      </div>
+    )}
+
+    <div className="movie-description">
+      <h3>Description</h3>
+      <p>{movie.description || 'No description available.'}</p>
+    </div>
+  </div>
+</div>
+
         </div>
 
         {/* Booking Section */}
@@ -192,6 +213,11 @@ const MovieDetails = (props) => {
           </div>
         </div>
       </div>
+      <button onClick={() => handleDeleteMovie(movie._id)}>
+  Delete Movie
+</button>
+
+
     </main>
   )
 }

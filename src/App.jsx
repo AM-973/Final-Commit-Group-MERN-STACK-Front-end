@@ -76,63 +76,94 @@ const Navigate = useNavigate();
     }
   }
 
-  const handleAddMovie = async(formData) => {
-    try {
-      const newMovie = await movieService.create(formData)
-      setMovies([newMovie, ...movies])
-      Navigate('/movies');
-    } catch (err) {
-      console.error('Failed to create movie:', err)
-    }
+const handleAddMovie = async (formData) => {
+  try {
+    const newMovie = await movieService.create(formData)
+    setMovies([newMovie, ...movies])  // add to state
+    Navigate('/movies')
+  } catch (err) {
+    console.error('Failed to create movie:', err)
   }
+}
 
-  const handleDeleteMovie = async(movieId) => {
-    try {
-      await movieService.deleteMovie(movieId)
-      setMovies(movies.filter((movie) => movie._id !== movieId))
-      Navigate('/movies')
-    } catch (err) {
-      console.error('Failed to delete movie:', err)
-    }
-  }
-
-  const handleUpdateMovie = async(formData, movieId) => {
+// Update Movie
+const handleUpdateMovie = async (formData, movieId) => {
+  try {
     const updatedMovie = await movieService.update(formData, movieId)
+    setMovies(movies.map(m => (m._id === movieId ? updatedMovie : m))) // update state
     Navigate(`/movies/${movieId}`)
+  } catch (err) {
+    console.error('Failed to update movie:', err)
   }
+}
+
+// Delete Movie
+const handleDeleteMovie = async (movieId) => {
+  try {
+    await movieService.deleteMovie(movieId)
+    setMovies(movies.filter(m => m._id !== movieId)) // remove from state
+    Navigate('/movies')
+  } catch (err) {
+    console.error('Failed to delete movie:', err)
+  }
+}
+
 
   return (
     <div className="app-container">
       <NavBar user={user} handleSignOut={handleSignOut} />
       <div className="main-content">
-        <Routes>
-            <Route path='/' element={<h1>Welcome to Tickets Website!</h1>} />
-           {user ? (
-            // Protected Routes
-            <>
-              <Route path='/dashboard' element={<Dashboard user={user} />} />
-              <Route path='/movies/new' element={<MovieForm handleAddMovie={handleAddMovie} />} />
-              <Route path='/movies/:movieId/edit' element={<MovieForm handleUpdateMovie={handleUpdateMovie} />} />
-              <Route path="/movies/:movieId/reviews/:reviewId/edit" element={<ReviewForm />}
-/>
-            </>
-          ) : (
-            // Public Routes
-            <> 
-              <Route 
-              path='/sign-up' 
-              element={user ? <Navigate to="/" /> : <SignUp handleSignUp={handleSignUp} user={user} />} 
-            />
-            <Route 
-              path='/sign-in' 
-              element={user ? <Navigate to="/" /> : <SignIn handleSignIn={handleSignIn} user={user} />} 
-            />
-            </>
-          )}
-            <Route path="/movies" element={<MovieList movies={movies} />} />
-            <Route path='/movies/:movieId' element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />
-            <Route path='*' element={<h1>404 - Page Not Found</h1>} />
-        </Routes>
+<Routes>
+  <Route path='/' element={<Landing />} />
+  
+  {user ? (
+    <>
+      {/* Protected Routes */}
+      <Route path='/dashboard' element={<Dashboard user={user} />} />
+      <Route
+        path='/movies/new'
+        element={<MovieForm handleAddMovie={handleAddMovie} />}
+      />
+      <Route
+        path='/movies/:movieId/edit'
+        element={<MovieForm handleUpdateMovie={handleUpdateMovie} />}
+      />
+      <Route
+        path='/movies/:movieId/reviews/:reviewId/edit'
+        element={<ReviewForm />}
+      />
+    </>
+  ) : (
+    <>
+      {/* Public Routes */}
+      <Route
+        path='/sign-up'
+        element={<SignUp handleSignUp={handleSignUp} />}
+      />
+      <Route
+        path='/sign-in'
+        element={<SignIn handleSignIn={handleSignIn} />}
+      />
+    </>
+  )}
+
+  <Route
+    path='/movies'
+    element={<MovieList movies={movies} />}
+  />
+  <Route
+    path='/movies/:movieId'
+    element={
+      <MovieDetails
+        user={user}
+        handleDeleteMovie={handleDeleteMovie}
+      />
+    }
+  />
+
+  <Route path='*' element={<h1>404 - Page Not Found</h1>} />
+</Routes>
+
       </div>
       <Footer />
     </div>
