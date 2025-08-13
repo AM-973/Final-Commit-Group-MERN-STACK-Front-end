@@ -6,6 +6,7 @@ import SignIn from './components/SignIn/SignIn'
 import MovieList from './components/MovieList/MovieList.jsx'
 import { Route, Routes, Navigate } from 'react-router-dom'
 import * as authService from './services/authService.js'
+import { useEffect, useState } from 'react'
 
 
 const App = () => {
@@ -66,7 +67,7 @@ const App = () => {
               path='/sign-in' 
               element={user ? <Navigate to="/" /> : <SignIn handleSignIn={handleSignIn} user={user} />} 
             />
-
+            <Route path="/movies" element={<MovieList movies={movies} />} />
             <Route path='*' element={<h1>404 - Page Not Found</h1>} />
         </Routes>
       </div>
