@@ -11,9 +11,7 @@ const NavBar = (props) => {
           <img src={CinemaCompany} alt="Movie booking logo" style={{height: '40px'}} />
         </Link>
 
-        {props.user.username && (
-                <span className={styles['navbar-welcome']}>Welcome, {props.user.username}</span>
-              )}
+        
         
         <div className={styles['navbar-menu']}>
           <Link to="/" className={styles['navbar-item']}>Home</Link>
@@ -23,6 +21,9 @@ const NavBar = (props) => {
             <>
               {props.user.isAdmin && (
                 <Link to='/movies/new' className={styles['navbar-item']}>Add Movie</Link>
+              )}
+              {props.user.username && (
+                <span className={styles['navbar-welcome']}>Welcome, {props.user.username}</span>
               )}
               
               <Link to='/dashboard' className={styles['navbar-item']}>My Profile</Link>
