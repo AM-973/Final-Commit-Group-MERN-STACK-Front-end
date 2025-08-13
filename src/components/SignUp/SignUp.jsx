@@ -18,7 +18,7 @@ const SignUp = (props) => {
     if (props.user) {
       navigate('/')
     }
-  }, [props.user])
+  }, [])
 
   const handleChange = (evt) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})

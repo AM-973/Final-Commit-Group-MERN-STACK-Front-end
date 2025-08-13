@@ -1,22 +1,24 @@
 import { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import './SignIn.css'
+import LoginIcon from '../../assets/images/login.svg' 
+import styles from './SignIn.module.css'
 
 const SignIn = (props) => {
-  const navigate = useNavigate()
 
+  useEffect(() => {
+    if (props.user) {
+      navigate('/')
+    }
+  }, [])
+
+  const navigate = useNavigate()
   const initialState = {
     username: '',
     password: '',
   }
 
   const [formData, setFormData] = useState(initialState)
-
-  useEffect(() => {
-    if (props.user) {
-      navigate('/')
-    }
-  }, [props.user])
 
   const handleChange = (evt) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
