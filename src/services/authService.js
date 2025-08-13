@@ -9,6 +9,7 @@ const signUp = async (formData) => {
       },
       body: JSON.stringify(formData)
     })
+    console.log('Sign Up Response:', res)
     const data = await res.json()
 
     // Checking if the response code was "ok"
@@ -36,6 +37,10 @@ const signIn = async (formData) => {
       body: JSON.stringify(formData)
     })
     const data = await res.json()
+
+    // Checking if the response code was "ok"
+    if (!res.ok) throw new Error(data.err || 'Something went wrong')
+
     if (data.token) {
       // save the token in local storage
       localStorage.setItem('token', data.token)
@@ -45,7 +50,8 @@ const signIn = async (formData) => {
     }
 
   } catch (err) {
-    console.log(err)
+    // throwing an error instead of console.logging
+    throw err
   }
 }
 
