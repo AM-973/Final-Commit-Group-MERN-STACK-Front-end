@@ -82,6 +82,7 @@
 /* ===== TEXTAREA ===== */
 .textarea {
   min-height: 120px;
+  min-width: 200px;
   resize: vertical;
   font-family: inherit;
   line-height: var(--line-height-relaxed);
@@ -133,7 +134,7 @@
   font-weight: var(--font-weight-semibold);
   cursor: pointer;
   transition: var(--transition-all);
-  width: 100%;
+  width: 22%;
   margin-top: var(--space-2);
 }
 

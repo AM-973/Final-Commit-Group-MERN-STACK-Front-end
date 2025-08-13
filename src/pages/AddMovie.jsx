@@ -63,6 +63,10 @@ const AddMovie = () => {
         director: fullData.Director || "Unknown",
         duration: parseInt(fullData.Runtime) || 120,
         category: fullData.Genre?.split(",")[0] || "Action",
+        posterUrl: fullData.Poster !== "N/A" ? fullData.Poster : null,
+        year: fullData.Year || "Unknown",
+        imdbRating: fullData.imdbRating || null,
+        imdbID: fullData.imdbID || null,
       }
 
       const token = localStorage.getItem("token")
