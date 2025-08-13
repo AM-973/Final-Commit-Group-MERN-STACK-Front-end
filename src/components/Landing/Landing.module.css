@@ -25,8 +25,25 @@
   }
   
   .splash {
-    height: 91vh;
+    height: 60vh;
     justify-content: center;
+  }
+  
+  .splash header {
+    text-align: center;
+    color: white;
+  }
+  
+  .splash h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: white !important;
+  }
+  
+  .splash p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    color: white !important;
   }
   
   .about {
@@ -38,7 +55,9 @@
   }
   
   .testimonial {
-    height: 80vh;
+    height: auto;
+    min-height: 50vh;
+    padding-bottom: 2rem;
   }
   
   .about header {
@@ -65,17 +84,35 @@
   .container section > header * {
     margin: 0px;
     font-weight: 600;
+    color: white !important;
   }
   
   .container section > header h1 {
     margin: 5px;
     font-size: 36px;
     letter-spacing: 2px;
+    color: white !important;
   }
   
   .container section > header h3 {
     font-size: 16px;
-    color: #00a0df;
+    color: white !important;
+  }
+  
+  .container h1,
+  .container h3 {
+    color: white !important;
+  }
+  
+  /* Specific colors for different sections */
+  .about header h1,
+  .about header h3 {
+    color: white !important;
+  }
+  
+  .testimonial header h1,
+  .testimonial header h3 {
+    color: white !important;
   }
   
   .testimonial > header {
@@ -152,7 +189,7 @@
   
   @media only screen and (max-width: 1200px) {
     .testimonial {
-      height: 680px;
+      min-height: 45vh;
     }
   }
   
@@ -161,7 +198,7 @@
       height: 420px;
     }
     .testimonial {
-      height: 580px;
+      min-height: 40vh;
     }
   }
   
@@ -170,7 +207,7 @@
       height: 460px;
     }
     .testimonial {
-      height: 600px;
+      min-height: 45vh;
     }
   }
   
@@ -179,7 +216,7 @@
       height: 560px;
     }
     .testimonial {
-      height: 700px;
+      min-height: 50vh;
     }
   }
   

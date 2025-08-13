@@ -2,14 +2,16 @@
 
 import styles from './Landing.module.css';
 import Stars from '../../assets/images/stars.svg';
-import Logotype from '../../assets/images/logotype.svg';
 
 const Landing = () => {
   return (
     <>
       <main className={styles.container}>
         <section className={styles.splash}>
-          <img src={Logotype} alt="Movie booking platform" />
+          <header>
+            <h1>Welcome to Tickets</h1>
+            <p>Your ultimate movie booking experience</p>
+          </header>
         </section>
 
         <section className={styles.about}>
@@ -53,10 +55,6 @@ const Landing = () => {
           </article>
         </section>
       </main>
-
-      <footer className={styles.footer}>
-        © 2024 MOVIE BOOKING PLATFORM. ALL RIGHTS RESERVED
-      </footer>
     </>
   );
 };
