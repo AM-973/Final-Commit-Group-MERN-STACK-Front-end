@@ -19,11 +19,25 @@ const MovieDetails = (props) => {
   const [rating, setRating] = useState(5)
   const [showSeatBooking, setShowSeatBooking] = useState(false)
   
+  // Temporary poster URLs for demonstration (remove when backend supports posters)
+  const tempPosters = {
+    "The Matrix23123": "https://m.media-amazon.com/images/M/MV5BNzQzOTk3OTAtNDQ0Zi00ZTVkLWI0MTEtMDllZjNkYzNjNTc4L2ltYWdlXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_.jpg",
+    "The matrix part 3": "https://m.media-amazon.com/images/M/MV5BYTZkODlkZjQtMmUzOS00YzFhLTlhZjMtZDEzNTA1YWY2NTMwXkEyXkFqcGdeQXVyMjUzOTY1NTc@._V1_.jpg",
+    "Weapons": "https://m.media-amazon.com/images/M/MV5BMTc0MDMyMzI2OF5BMl5BanBnXkFtZTcwMzM2OTk1MQ@@._V1_.jpg",
+    "Test Movie with Poster": "https://m.media-amazon.com/images/M/MV5BNzA5ZDNlZWMtM2NhNS00NDJjLTk4NDItYTRmY2EwMWI5MTktXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg",
+    "Taken": "https://upload.wikimedia.org/wikipedia/en/e/ed/Taken_film_poster.jpg"
+  };
+  
   useEffect(() => {
     // fetch a single movie
     const fetchMovie = async () => {
       const movieData = await movieService.show(movieId)
-      setMovie(movieData)
+      // Add temporary poster for demonstration
+      const movieWithPoster = {
+        ...movieData,
+        poster: movieData.poster || tempPosters[movieData.title] || null
+      };
+      setMovie(movieWithPoster)
     }
     fetchMovie()
   }, [movieId])
@@ -52,7 +66,6 @@ const MovieDetails = (props) => {
       })
       setReview('')
       setRating(5)
-      alert('Review added successfully!')
     } catch (error) {
       console.error('Error adding review:', error)
       alert(`Failed to add review: ${error.message}`)
