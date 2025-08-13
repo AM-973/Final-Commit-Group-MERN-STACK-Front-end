@@ -13,4 +13,23 @@ const index = async () => {
   }
 };
 
-export { index };
+const createReview = async (movieId, reviewFormData) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${movieId}/reviews`, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem('token')}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(reviewFormData),
+    });
+    return res.json();
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export {
+  index,
+  createReview,
+};

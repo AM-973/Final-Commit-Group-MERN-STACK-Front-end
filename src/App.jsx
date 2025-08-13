@@ -19,6 +19,7 @@ const App = () => {
   useEffect(() => {
     const fetchAllMovies = async () => {
       const moviesData = await movieService.index()
+      console.log('Fetched movies:', moviesData)
       setMovies(moviesData)
     }
   fetchAllMovies()
