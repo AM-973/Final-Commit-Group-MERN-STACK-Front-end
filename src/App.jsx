@@ -7,6 +7,7 @@ import MovieList from './components/MovieList/MovieList'
 import MovieDetails from './components/MovieDetails/MovieDetails'
 import MovieForm from './components/MovieForm/MovieForm'
 import ReviewForm from './components/ReviewForm/ReviewForm';
+import ImageTester from './components/ImageTester/ImageTester'
 import { Route, Routes, useNavigate } from 'react-router-dom'
 import * as authService from './services/authService.js'
 import * as movieService from './services/movieService'
@@ -81,8 +82,10 @@ const handleAddMovie = async (formData) => {
     const newMovie = await movieService.create(formData)
     setMovies([newMovie, ...movies])  // add to state
     Navigate('/movies')
+    return { success: true }
   } catch (err) {
     console.error('Failed to create movie:', err)
+    throw err // Re-throw so the form can handle it
   }
 }
 
@@ -92,8 +95,10 @@ const handleUpdateMovie = async (formData, movieId) => {
     const updatedMovie = await movieService.update(formData, movieId)
     setMovies(movies.map(m => (m._id === movieId ? updatedMovie : m))) // update state
     Navigate(`/movies/${movieId}`)
+    return { success: true }
   } catch (err) {
     console.error('Failed to update movie:', err)
+    throw err // Re-throw so the form can handle it
   }
 }
 
@@ -120,6 +125,7 @@ const handleDeleteMovie = async (movieId) => {
     <>
       {/* Protected Routes */}
       <Route path='/dashboard' element={<Dashboard user={user} />} />
+      <Route path='/test-images' element={<ImageTester />} />
       <Route
         path='/movies/new'
         element={<MovieForm handleAddMovie={handleAddMovie} />}

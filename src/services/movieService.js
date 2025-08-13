@@ -52,26 +52,51 @@ const create = async (formData) => {
       body: JSON.stringify(formData)
     })
 
+    if (!res.ok) {
+      const errorData = await res.json()
+      throw new Error(errorData.err || 'Failed to create movie')
+    }
+
     const data = await res.json()
     return data
 
   } catch (err) {
-    console.log(err)
+    console.error('Create movie error:', err)
+    throw err
   }
 }
 
 const createReview = async (reviewFormData, movieId) => {
+  try {
     const token = localStorage.getItem('token')
-   const res = await fetch(`${BASE_URL}/${movieId}/reviews`, {
-    method: 'POST',
-    headers: {
+    console.log('Creating review with data:', reviewFormData)
+    console.log('Movie ID:', movieId)
+    console.log('Token:', token ? 'Present' : 'Missing')
+    
+    const res = await fetch(`${BASE_URL}/${movieId}/reviews`, {
+      method: 'POST',
+      headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`
-    },
-    body: JSON.stringify(reviewFormData)
-   })
-   const data = await res.json()
-   return data
+      },
+      body: JSON.stringify(reviewFormData)
+    })
+    
+    console.log('Response status:', res.status)
+    
+    if (!res.ok) {
+      const errorData = await res.json()
+      console.error('Review creation failed:', errorData)
+      throw new Error(errorData.err || errorData.message || 'Failed to create review')
+    }
+    
+    const data = await res.json()
+    console.log('Review created successfully:', data)
+    return data
+  } catch (err) {
+    console.error('Create review error:', err)
+    throw err
+  }
 } 
 
 const deleteMovie = async (movieId) => {
@@ -84,10 +109,14 @@ const deleteMovie = async (movieId) => {
             }
         })
         const data = await res.json()
+        if (!res.ok) {
+            throw new Error(data.err || 'Failed to delete movie')
+        }
         return data
     } catch(err) {
         console.log(err)
-        }
+        throw err
+    }
 }
 
 const update = async (formData, movieId) => {
@@ -149,11 +178,28 @@ const updateReview = async (movieId, reviewId, reviewFormData) => {
 
 const getSeats = async (movieId) => {
   try {
-    const res = await fetch(`${BASE_URL}/${movieId}/seats`)
+    const res = await fetch(`${BASE_URL}/${movieId}/seats`, {
+      headers: getHeaders()
+    })
+    
+    // If the endpoint doesn't exist or returns 404, that's okay
+    if (res.status === 404) {
+      console.log('Seats endpoint not found, will use default layout')
+      return null
+    }
+    
+    if (!res.ok) {
+      console.warn(`Seats API returned ${res.status}, using default layout`)
+      return null
+    }
+    
     const data = await res.json()
+    console.log('Seats API response:', data)
     return data
   } catch (err) {
-    console.log(err)
+    console.warn('Error fetching seats (will use default):', err.message)
+    // Return null instead of throwing - let component handle gracefully
+    return null
   }
 }
 
@@ -167,6 +213,31 @@ const bookSeats = async (movieId, seatNumbers) => {
         Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({ seatNumbers })
+    })
+    
+    if (!res.ok) {
+      const errorData = await res.json()
+      throw new Error(errorData.message || errorData.err || `Booking failed: ${res.status}`)
+    }
+    
+    const data = await res.json()
+    return data
+  } catch (err) {
+    console.error('Seat booking error:', err)
+    throw err
+  }
+}
+
+const bookTickets = async (bookingData, movieId) => {
+  try {
+    const token = localStorage.getItem('token')
+    const res = await fetch(`${BASE_URL}/${movieId}/book`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(bookingData)
     })
     const data = await res.json()
     return data
@@ -186,5 +257,6 @@ export {
   deleteReview,
   updateReview,
   getSeats,
-  bookSeats
+  bookSeats,
+  bookTickets
 }
