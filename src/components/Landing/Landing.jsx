@@ -2,14 +2,14 @@
 
 import styles from './Landing.module.css';
 import Stars from '../../assets/images/stars.svg';
-import Logotype from '../../assets/images/logotype.svg';
+import CinemaCompany from '../../assets/images/cinemacompany.jpg';
 
 const Landing = () => {
   return (
     <>
       <main className={styles.container}>
         <section className={styles.splash}>
-          <img src={Logotype} alt="Movie booking platform" />
+          <img src={CinemaCompany} alt="Movie booking platform" />
         </section>
 
         <section className={styles.about}>

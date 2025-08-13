@@ -1,12 +1,12 @@
 import { Link } from 'react-router-dom'
 import styles from './NavBar.module.css';
-import Logo from '../../assets/images/logo.svg'
+import CinemaCompany from '../../assets/images/cinemacompany.jpg';
 
 const NavBar = (props) => {
 
   return (
     <nav className={styles.container}>
-        <Link to='/'><img src={Logo} alt="Movie booking logo" /></Link>
+        <Link to='/'><img src={CinemaCompany} alt="Movie booking logo" /></Link>
         
     <ul>
       <li><Link to="/"> Home </Link></li>
