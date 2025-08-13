@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
+import './SignIn.css'
 
 const SignIn = (props) => {
   const navigate = useNavigate()
@@ -28,18 +29,42 @@ const SignIn = (props) => {
   }
 
   return (
-    <main>
-      <h1>Sign In Form</h1>
-      <form onSubmit={handleSubmit}>
-        <label>Username:</label>
-        <input type="text" name='username' onChange={handleChange} />
-        <br />
-        <label>Password:</label>
-        <input type="password" name='password' onChange={handleChange} />
-        <br />
-        <button type="submit">Sign In</button>
-      </form>
-    </main>
+    <div className="signin-container">
+      <div className="signin-form">
+        <h1 className="signin-title">Log in to Your Account</h1>
+        <p className="signin-subtitle">
+          Don't have an account? <Link to="/sign-up" className="register-link">Register</Link>
+        </p>
+        
+        <form onSubmit={handleSubmit} className="signin-form-content">
+          <div className="input-group">
+            <input 
+              type="text" 
+              name='username' 
+              placeholder="Username"
+              value={formData.username}
+              onChange={handleChange} 
+              className="signin-input"
+              required
+            />
+          </div>
+          
+          <div className="input-group">
+            <input 
+              type="password" 
+              name='password' 
+              placeholder="Password"
+              value={formData.password}
+              onChange={handleChange} 
+              className="signin-input"
+              required
+            />
+          </div>
+          
+          <button type="submit" className="signin-button">Log in</button>
+        </form>
+      </div>
+    </div>
   )
 }
 
