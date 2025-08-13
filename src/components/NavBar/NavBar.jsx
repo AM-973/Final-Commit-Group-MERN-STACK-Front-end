@@ -28,6 +28,7 @@ const NavBar = (props) => {
             <>
               <Link to="/sign-in" className="navbar-item">Sign In</Link>
               <Link to="/sign-up" className="navbar-item navbar-signup">Sign Up</Link>
+              <Link to='/movies'>Movies</Link>
             </>
           )}
         </div>
