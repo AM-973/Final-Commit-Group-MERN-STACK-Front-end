@@ -19,15 +19,20 @@ const SignIn = (props) => {
   }
 
   const [formData, setFormData] = useState(initialState)
+  const [error, setError] = useState(null)
 
   const handleChange = (evt) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
   }
 
-  const handleSubmit = (evt) => {
+  const handleSubmit = async (evt) => {
     evt.preventDefault()
-    props.handleSignIn(formData)
-    navigate('/')
+    const result = await props.handleSignIn(formData)
+    if (result.success) {
+      navigate('/')
+    } else {
+      setError(result.message)
+    }
   }
 
   return (
@@ -38,6 +43,7 @@ const SignIn = (props) => {
       
       <form onSubmit={handleSubmit}>
       <h1>Sign In </h1>
+      {error && <h3 style={{color: 'red'}}>{error}!</h3>}
         <label>Username:</label>
         <input type="text" name='username' onChange={handleChange} autoComplete='username' />
         <br />

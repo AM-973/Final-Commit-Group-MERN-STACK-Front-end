@@ -44,11 +44,8 @@ const navigate = useNavigate();
     try {
       const res = await authService.signUp(formData)
       setUser(res)
-      // return success
       return { success: true }
     } catch(err){
-      // return failure flag (then signup form can display message)
-      // add message?
       return { success: false, message: err.message }
     }
   }
@@ -59,8 +56,13 @@ const navigate = useNavigate();
   }
 
   const handleSignIn = async (formData) => {
-    const res = await authService.signIn(formData)
-    setUser(res)
+    try {
+      const res = await authService.signIn(formData)
+      setUser(res)
+      return { success: true }
+    } catch (err) {
+      return { success: false, message: err.message }
+    }
   }
 
   const handleAddMovie = async(formData) => {

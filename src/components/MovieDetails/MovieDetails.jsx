@@ -87,7 +87,7 @@ const MovieDetails = (props) => {
         <p>{movie.category}</p>
         <h2>{movie.title}</h2>
         <AuthorInfo content={movie} />
-          {props.user?.isAdmin && (
+          {(movie.owner?._id === props.user?._id || props.user?.isAdmin) && (
   <>
     <Link to={`/movies/${movieId}/edit`}>
       <Icon category="Edit" />
@@ -143,7 +143,7 @@ const MovieDetails = (props) => {
           <article key={review._id}>
             <header>
             <AuthorInfo content={review} />
-            {authorId === props.user?._id || props.user?.isAdmin && (
+            {(authorId === props.user?._id) && (
               <>
                 <Link to={`/movies/${movieId}/reviews/${review._id}/edit`}><Icon category="Edit" /></Link>
                 <button onClick={() => handleDeleteReview(movieId, review._id)}><Icon category="Trash" /></button>
@@ -151,13 +151,6 @@ const MovieDetails = (props) => {
             )}
             <p>Rating: {review.rating}/5</p>
             <p>Reviewer: {review.user.username}</p>
-            
-            {authorId === props.user?._id && (
-              <>
-                <Link to={`/movies/${movieId}/reviews/${review._id}/edit`}><Icon category="Edit" /></Link>
-                <button onClick={() => handleDeleteReview(movieId, review._id)}><Icon category="Trash" /></button>
-              </>
-            )}
             </header>
             
             <p>{review.comment}</p>

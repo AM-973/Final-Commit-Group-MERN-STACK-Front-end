@@ -36,6 +36,12 @@ const signIn = async (formData) => {
       body: JSON.stringify(formData)
     })
     const data = await res.json()
+    
+  
+    if (!res.ok) {
+      throw new Error('Invalid credentials')
+    }
+    
     if (data.token) {
       // save the token in local storage
       localStorage.setItem('token', data.token)
@@ -45,7 +51,7 @@ const signIn = async (formData) => {
     }
 
   } catch (err) {
-    console.log(err)
+    throw err
   }
 }
 

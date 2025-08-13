@@ -25,26 +25,22 @@ const SignUp = (props) => {
   const handleChange = (evt) => {
     setFormData({...formData, [evt.target.name]: evt.target.value})
   }
-
-  // made this function asynchronous
   const handleSubmit = async (evt) => {
-    evt.preventDefault()  
-    // saved the return as "result"
+    evt.preventDefault()
+    if (formData.password !== formData.passwordConf) {
+      setError('Passwords do not match')
+      return
+    }
+    setError(null)
     const result = await props.handleSignUp(formData)
-    // if sign up is succssful, navigate to home
-    if (result.success){
+    if (result.success) {
       navigate('/')
     } else {
-      // otherwise, set the error message state 
       setError(result.message)
     }
   }
 
-  let formIsInvalid = true
-
-  if (formData.username && formData.password && formData.password === formData.passwordConf) {
-    formIsInvalid = false
-  }
+  
 
   return (
     <main className={styles.container}>
@@ -54,7 +50,7 @@ const SignUp = (props) => {
       <section>
       <form onSubmit={handleSubmit}>
       <h1>Sign up Form</h1>
-      <p>{error}</p>
+      
         <label>Username:</label>
         <input type="text" name='username' onChange={handleChange} autoComplete='username' />
         <br />
@@ -64,7 +60,8 @@ const SignUp = (props) => {
         <label>Confirm Password:</label>
         <input type="password" name="passwordConf" onChange={handleChange} autoComplete='new-password' />
         <br />
-        <button type="submit" disabled={formIsInvalid}>Sign up</button>
+        {error && <h3 style={{color: 'red'}}>{error}!</h3>}
+        <button type="submit">Sign up</button>
       </form>
       </section>
     </main>
