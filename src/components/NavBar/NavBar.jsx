@@ -5,27 +5,43 @@ import CinemaCompany from '../../assets/images/cinemacompany.jpg';
 const NavBar = (props) => {
 
   return (
-    <nav className={styles.container}>
-        <Link to='/'><img src={CinemaCompany} alt="Movie booking logo" /></Link>
+    <nav className={styles.navbar}>
+      <div className={styles['navbar-container']}>
+        <Link to='/' className={styles['navbar-brand']}>
+          <img src={CinemaCompany} alt="Movie booking logo" style={{height: '40px'}} />
+        </Link>
+
+        {props.user.username && (
+                <span className={styles['navbar-welcome']}>Welcome, {props.user.username}</span>
+              )}
         
-    <ul>
-      <li><Link to="/"> Home </Link></li>
-      <li><Link to="/movies"> Movies </Link></li>
-      
-    {props.user ? (
-      <>
-        {props.user.isAdmin && <li><Link to='/movies/new'>Add Movie</Link></li>}
-        <li><Link to='/dashboard'>My Profile</Link></li>
-        <li><Link to='/' onClick={props.handleSignOut}>Sign Out</Link></li>
-      </>
-      ) : (
-        <>
-          <li><Link to="/sign-up">Sign Up</Link></li>
-          <li><Link to="/sign-in">Sign In</Link></li>
-        </>
-        ) }
-      </ul>
-  </nav>
+        <div className={styles['navbar-menu']}>
+          <Link to="/" className={styles['navbar-item']}>Home</Link>
+          <Link to="/movies" className={styles['navbar-item']}>Movies</Link>
+          
+          {props.user ? (
+            <>
+              {props.user.isAdmin && (
+                <Link to='/movies/new' className={styles['navbar-item']}>Add Movie</Link>
+              )}
+              
+              <Link to='/dashboard' className={styles['navbar-item']}>My Profile</Link>
+              <button 
+                onClick={props.handleSignOut} 
+                className={`${styles['navbar-item']} ${styles['navbar-button']}`}
+              >
+                Sign Out
+              </button>
+            </>
+          ) : (
+            <>
+              <Link to="/sign-up" className={`${styles['navbar-item']}`}>Sign Up</Link>
+              <Link to="/sign-in" className={styles['navbar-item']}>Sign In</Link>
+            </>
+          )}
+        </div>
+      </div>
+    </nav>
   )
 }
 

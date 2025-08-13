@@ -1,42 +1,117 @@
-/* src/components/NavBar/NavBar.module.css */
+/* Base navbar styles */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #2c3e50;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  height: 60px;
+}
 
-.container {
-    top: 0; 
-    z-index: 1;
-    width: 100%;
-    height: 80px;
-    display: flex;
-    position: fixed; 
-    padding: 14px 21px;
-    align-items: center;
-    background: white;
-    border-bottom: 1px solid rgb(200, 200, 200);
+.navbar-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100%;
+}
+
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ecf0f1;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  display: flex;
+  align-items: center;
+}
+
+.navbar-brand:hover {
+  color: #3498db;
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.navbar-item {
+  color: #ecf0f1;
+  text-decoration: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  font-size: 0.95rem;
+}
+
+.navbar-item:hover {
+  background-color: #34495e;
+  color: #ffffff;
+}
+
+.navbar-signup {
+  background-color: #3498db;
+  color: white;
+}
+
+.navbar-signup:hover {
+  background-color: #2980b9;
+}
+
+.navbar-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.95rem;
+}
+
+.navbar-button:hover {
+  background-color: #e74c3c;
+}
+
+.navbar-welcome {
+  color: #bdc3c7;
+  font-size: 0.9rem;
+  padding: 8px 12px;
+}
+
+/* Media queries for responsive design */
+@media (max-width: 768px) {
+  .navbar-container {
+    padding: 0 15px;
   }
   
-  .container img {
-    width: 50px;
+  .navbar-menu {
+    gap: 10px;
   }
   
-  .container ul {
-    margin: 0;
-    width: 100%;
-    display: flex;
-    list-style: none;
-    font-weight: bold;
-    align-items: center;
-    justify-content: flex-end;
+  .navbar-item {
+    padding: 6px 12px;
+    font-size: 0.9rem;
   }
   
-  .container li {
-    margin-left: 35px;
-    text-align: right;
+  .navbar-brand {
+    font-size: 1.3rem;
   }
   
-  @media only screen and (max-width: 414px) {
-    .container ul {
-      padding-left: 0px;
-    }
-    .container li {
-      font-size: 15px;
-    }
+  .navbar-welcome {
+    display: none; 
   }
+}
+
+@media (max-width: 480px) {
+  .navbar-menu {
+    gap: 5px;
+  }
+  
+  .navbar-item {
+    padding: 6px 8px;
+    font-size: 0.85rem;
+  }
+}
