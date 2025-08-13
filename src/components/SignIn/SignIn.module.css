@@ -4,7 +4,7 @@
 
 .container {
   min-height: 100vh;
-  display: flex;
+    display: flex;
   align-items: center;
   justify-content: center;
   padding: var(--space-8) var(--space-4);
@@ -27,7 +27,7 @@
   border: 1px solid var(--color-border);
   border-radius: var(--radius-2xl);
   box-shadow: var(--shadow-2xl);
-  overflow: hidden;
+    overflow: hidden;
   position: relative;
 }
 
@@ -107,7 +107,7 @@
   font-size: var(--font-size-sm);
   font-weight: var(--font-weight-medium);
   display: flex;
-  align-items: center;
+    align-items: center;
   gap: var(--space-2);
   margin-bottom: var(--space-4);
 }
@@ -128,7 +128,7 @@
   color: var(--color-fg-muted);
   text-align: center;
   line-height: var(--line-height-relaxed);
-  margin: 0;
+    margin: 0;
 }
 
 /* ===== RESPONSIVE DESIGN ===== */
@@ -201,5 +201,5 @@
 @media (prefers-reduced-motion: reduce) {
   .link {
     transition: none;
+    }
   }
-}
