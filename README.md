@@ -188,23 +188,23 @@ moviehero-frontend/
 
 ### 🏠 Homepage
 Beautiful landing page with hero section and feature highlights
-<img src="./Landingpage.png">
+<img src="public/readmeimages/Landingpage.png">
 
 ### 🎬 Movie Gallery
 Horizontal scrolling movie cards with poster displays
-<img src="./Movielist.png">
+<img src="public/readmeimages/Movielist.png">
 
 ### 🎭 Movie Details
 Comprehensive movie information with seat booking interface
-<img src="./Moviedetails.png">
+<img src="public/readmeimages/Moviedetails.png">
 
 ### 📊 User Dashboard
 Personal ticket history and profile management
-<img src="./Userdashboard.png">
+<img src="public/readmeimages/Userdashboard.png">
 
 ### 👑 Admin Panel
 Administrative controls for content management
-<img src="./adminpanel.png">
+<img src="public/readmeimages/adminpanel.png">
 ## 🌐 Live Demo
 
 ### Application Links
