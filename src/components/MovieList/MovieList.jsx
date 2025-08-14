@@ -67,11 +67,35 @@ const MovieList = (props) => {
                     <div className={styles.movieMeta}>
                       <h2 className={styles.movieTitle}>{movie.title}</h2>
                       <div className={styles.categoryBadge}>
-                        <Icon category={movie.category} />
                         <span>{movie.category}</span>
                       </div>
                     </div>
-                    <AuthorInfo content={movie} />
+                    <div className={styles.movieActions}>
+                      <AuthorInfo content={movie} />
+                      {(movie.owner?._id === props.user?._id || props.user?.isAdmin) && (
+                        <div className={styles.actionButtons}>
+                          <Link 
+                            to={`/movies/${movie._id}/edit`} 
+                            className={styles.actionButton}
+                            title="Edit Movie"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Icon category="Edit" />
+                          </Link>
+                          <button 
+                            onClick={(e) => {
+                              e.preventDefault()
+                              e.stopPropagation()
+                              props.handleDeleteMovie(movie._id)
+                            }}
+                            className={`${styles.actionButton} ${styles.deleteButton}`}
+                            title="Delete Movie"
+                          >
+                            <Icon category="Trash" />
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </header>
 
                   <div className={styles.movieDetails}>
