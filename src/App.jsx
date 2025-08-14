@@ -116,7 +116,7 @@ const navigate = useNavigate();
             </>
           )}
           <Route path='/' element={<Landing />} />
-          <Route path='/movies' element={<MovieList movies={movies} />} />
+          <Route path='/movies' element={<MovieList movies={movies} user={user} handleDeleteMovie={handleDeleteMovie} />} />
           <Route path='/movies/:movieId' element={<MovieDetails user={user} handleDeleteMovie={handleDeleteMovie} />} />
           <Route path='*' element={<h1>404 PAGE NOT FOUND</h1>} />
       </Routes>

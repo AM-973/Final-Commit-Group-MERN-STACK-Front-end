@@ -38,7 +38,7 @@ const MovieList = (props) => {
           </p>
         </header>
 
-        <div className={`grid grid--3 ${styles.movieGrid}`}>
+        <div className={styles.movieGrid}>
           {props.movies.map((movie) => (
             <article key={movie._id} className={`card ${styles.movieCard}`}>
               <Link to={`/movies/${movie._id}`} className={styles.movieLink}>

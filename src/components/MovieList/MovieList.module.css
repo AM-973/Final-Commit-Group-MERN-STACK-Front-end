@@ -33,6 +33,31 @@
 /* ===== MOVIE GRID ===== */
 .movieGrid {
   margin-bottom: var(--space-12);
+  display: flex;
+  gap: var(--space-6);
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: var(--space-4) 0;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+}
+
+.movieGrid::-webkit-scrollbar {
+  height: 8px;
+}
+
+.movieGrid::-webkit-scrollbar-track {
+  background: var(--color-bg-subtle);
+  border-radius: var(--radius-full);
+}
+
+.movieGrid::-webkit-scrollbar-thumb {
+  background: var(--color-accent);
+  border-radius: var(--radius-full);
+}
+
+.movieGrid::-webkit-scrollbar-thumb:hover {
+  background: var(--color-accent-2);
 }
 
 .movieCard {
@@ -40,6 +65,9 @@
   overflow: hidden;
   transition: var(--transition-all);
   cursor: pointer;
+  flex: 0 0 calc(25% - var(--space-4));
+  min-width: 280px;
+  max-width: 320px;
 }
 
 .movieCard:hover {
@@ -315,8 +343,10 @@
 
 /* ===== RESPONSIVE DESIGN ===== */
 @media (max-width: 1024px) {
-  .movieGrid {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  .movieCard {
+    flex: 0 0 calc(33.333% - var(--space-4));
+    min-width: 250px;
+    max-width: 300px;
   }
 }
 
@@ -340,8 +370,13 @@
   
   .movieGrid {
     margin-bottom: var(--space-8);
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: var(--space-4);
+  }
+  
+  .movieCard {
+    flex: 0 0 calc(50% - var(--space-3));
+    min-width: 200px;
+    max-width: 250px;
   }
   
   .movieContent {
@@ -361,12 +396,13 @@
 
 @media (max-width: 480px) {
   .movieGrid {
-    grid-template-columns: 1fr;
-    gap: var(--space-4);
+    gap: var(--space-3);
   }
   
   .movieCard {
-    max-width: 100%;
+    flex: 0 0 calc(70% - var(--space-2));
+    min-width: 180px;
+    max-width: 220px;
   }
   
   .emptyState {
