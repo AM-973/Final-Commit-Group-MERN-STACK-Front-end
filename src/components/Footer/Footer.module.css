@@ -1,0 +1,105 @@
+/* ================================
+   FOOTER - CINEMATIC DESIGN
+   ================================ */
+
+.footer {
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-elevated) 0%,
+    var(--color-bg-subtle) 100%
+  );
+  border-top: 1px solid var(--color-border);
+  margin-top: auto;
+}
+
+.container {
+  padding-top: var(--space-6);
+  padding-bottom: var(--space-6);
+}
+
+/* ===== BOTTOM SECTION ===== */
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.copyright {
+  color: var(--color-fg-muted);
+  font-size: var(--font-size-sm);
+}
+
+.copyright p {
+  margin: 0;
+}
+
+/* ===== GITHUB LINK ===== */
+.github {
+  display: flex;
+  align-items: center;
+}
+
+.githubLink {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-4);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-fg-subtle);
+  text-decoration: none;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--color-border);
+  background-color: var(--color-bg-elevated);
+  transition: var(--transition-all);
+}
+
+.githubLink:hover {
+  color: var(--color-fg);
+  background-color: var(--color-accent-subtle);
+  border-color: var(--color-accent);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+.githubLink:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+.githubIcon {
+  font-size: var(--font-size-base);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .bottom {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding-top: var(--space-4);
+    padding-bottom: var(--space-4);
+  }
+  
+  .githubLink {
+    padding: var(--space-2) var(--space-3);
+    font-size: var(--font-size-xs);
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .githubLink {
+    transition: none;
+  }
+  
+  .githubLink:hover {
+    transform: none;
+  }
+}

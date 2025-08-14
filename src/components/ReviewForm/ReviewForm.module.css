@@ -1,0 +1,263 @@
+/* ================================
+   REVIEW FORM - CINEMATIC DESIGN
+   ================================ */
+
+/* ===== EDIT PAGE CONTAINER ===== */
+.container {
+  min-height: 100vh;
+  padding-top: calc(72px + var(--space-8));
+  padding-bottom: var(--space-12);
+  background: linear-gradient(
+    135deg,
+    var(--color-bg) 0%,
+    var(--color-bg-subtle) 100%
+  );
+}
+
+.editContainer {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* ===== HEADERS ===== */
+.header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-fg);
+  margin-bottom: var(--space-4);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-fg-subtle);
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===== REVIEW SECTION (inline on movie details) ===== */
+.reviewSection {
+  background: var(--color-bg-elevated);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  margin-top: var(--space-8);
+  box-shadow: var(--shadow-lg);
+}
+
+.reviewHeader {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.reviewTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-fg);
+  margin-bottom: var(--space-2);
+}
+
+.reviewSubtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-fg-subtle);
+  margin: 0;
+}
+
+/* ===== FORMS ===== */
+.form,
+.reviewForm {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-6);
+}
+
+.reviewForm {
+  gap: var(--space-5);
+}
+
+/* ===== TEXTAREA ===== */
+.textarea {
+  min-height: 120px;
+  min-width: 200px;
+  resize: vertical;
+  font-family: inherit;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===== RATING CONTAINER ===== */
+.ratingContainer {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.ratingSelect {
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right 12px center;
+  background-repeat: no-repeat;
+  background-size: 16px 16px;
+  width: 100%;
+  padding-right: var(--space-10);
+}
+
+.starPreview {
+  font-size: var(--font-size-lg);
+  text-align: center;
+  padding: var(--space-3);
+  background: var(--color-bg-subtle);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-accent-2);
+}
+
+/* ===== ACTIONS ===== */
+.actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: flex-end;
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ===== BUTTON OVERRIDES ===== */
+.reviewForm button[type="submit"] {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  color: var(--color-fg-inverse);
+  border: none;
+  padding: var(--space-4) var(--space-6);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: var(--transition-all);
+  width: 25%;
+  margin-top: var(--space-2);
+}
+
+.reviewForm button[type="submit"]:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--color-accent-hover) 0%, var(--color-accent) 100%);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+.reviewForm button[type="submit"]:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.form button[type="submit"] {
+  background: linear-gradient(135deg, var(--color-accent) 0%, var(--color-accent-hover) 100%);
+  color: var(--color-fg-inverse);
+  border: none;
+  padding: var(--space-3) var(--space-6);
+  border-radius: var(--radius-lg);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  cursor: pointer;
+  transition: var(--transition-all);
+}
+
+.form button[type="submit"]:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--color-accent-hover) 0%, var(--color-accent) 100%);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .container {
+    padding-top: calc(64px + var(--space-6));
+    padding-bottom: var(--space-8);
+  }
+  
+  .header {
+    margin-bottom: var(--space-8);
+  }
+  
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .reviewSection {
+    padding: var(--space-6);
+    margin-top: var(--space-6);
+  }
+  
+  .reviewTitle {
+    font-size: var(--font-size-xl);
+  }
+  
+  .reviewSubtitle {
+    font-size: var(--font-size-sm);
+  }
+  
+  .actions {
+    flex-direction: column-reverse;
+  }
+  
+  .actions .btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .reviewSection {
+    padding: var(--space-4);
+    border-radius: var(--radius-lg);
+  }
+  
+  .form,
+  .reviewForm {
+    gap: var(--space-4);
+  }
+  
+  .textarea {
+    min-height: 100px;
+  }
+  
+  .ratingContainer {
+    gap: var(--space-2);
+  }
+  
+  .starPreview {
+    padding: var(--space-2);
+    font-size: var(--font-size-base);
+  }
+}
+
+/* ===== FOCUS STATES ===== */
+.textarea:focus,
+.ratingSelect:focus {
+  outline: none;
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 3px var(--color-accent-subtle);
+}
+
+/* ===== HIGH CONTRAST MODE ===== */
+@media (prefers-contrast: high) {
+  .reviewSection {
+    border-width: 2px;
+  }
+  
+  .textarea,
+  .ratingSelect {
+    border-width: 2px;
+  }
+}
+
+/* ===== DARK MODE ADJUSTMENTS ===== */
+@media (prefers-color-scheme: dark) {
+  .ratingSelect {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%9ca3af' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  }
+}

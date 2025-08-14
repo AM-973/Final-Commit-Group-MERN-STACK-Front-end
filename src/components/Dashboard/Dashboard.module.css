@@ -1,0 +1,344 @@
+/* ================================
+   DASHBOARD - CINEMATIC DESIGN
+   ================================ */
+
+.container {
+  min-height: 100vh;
+  padding-top: calc(72px + var(--space-8));
+  padding-bottom: var(--space-12);
+}
+
+/* ===== HEADER ===== */
+.header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.title {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-fg);
+  margin-bottom: var(--space-4);
+  letter-spacing: var(--letter-spacing-tight);
+}
+
+.subtitle {
+  font-size: var(--font-size-lg);
+  color: var(--color-fg-subtle);
+  max-width: 600px;
+  margin: 0 auto;
+  line-height: var(--line-height-relaxed);
+}
+
+/* ===== LOADING STATE ===== */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  min-height: 400px;
+  color: var(--color-fg-subtle);
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--color-border);
+  border-top: 3px solid var(--color-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* ===== DASHBOARD GRID ===== */
+.dashboardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: var(--space-8);
+  margin-bottom: var(--space-8);
+}
+
+/* ===== CARD COMPONENTS ===== */
+.profileCard,
+.ticketsCard,
+.adminCard {
+  padding: 0;
+  overflow: hidden;
+  transition: var(--transition-all);
+}
+
+.profileCard:hover,
+.ticketsCard:hover,
+.adminCard:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-2xl);
+}
+
+.adminCard {
+  grid-column: 1 / -1;
+  background: linear-gradient(
+    135deg,
+    var(--color-bg-elevated) 0%,
+    var(--color-accent-subtle) 100%
+  );
+  border: 1px solid var(--color-accent);
+}
+
+/* ===== CARD HEADERS ===== */
+.cardHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: var(--space-6) var(--space-6) 0;
+  margin-bottom: var(--space-4);
+}
+
+.cardTitle {
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-fg);
+  margin: 0;
+}
+
+.profileAvatar {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, var(--color-accent), var(--color-accent-2));
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: var(--font-size-xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-fg-inverse);
+}
+
+.ticketIcon,
+.adminIcon {
+  font-size: var(--font-size-2xl);
+  opacity: 0.8;
+}
+
+/* ===== CARD CONTENT ===== */
+.cardContent {
+  padding: 0 var(--space-6) var(--space-6);
+}
+
+/* ===== PROFILE INFO ===== */
+.profileInfo {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.infoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--space-3) 0;
+  border-bottom: 1px solid var(--color-border);
+}
+
+.infoItem:last-child {
+  border-bottom: none;
+}
+
+.infoLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+  font-weight: var(--font-weight-medium);
+}
+
+.infoValue {
+  font-size: var(--font-size-base);
+  color: var(--color-fg);
+  font-weight: var(--font-weight-medium);
+}
+
+.adminBadge {
+  color: var(--color-accent-2);
+  font-weight: var(--font-weight-semibold);
+}
+
+.userBadge {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-semibold);
+}
+
+/* ===== TICKET STATS ===== */
+.ticketStats {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.statItem {
+  margin-bottom: var(--space-4);
+}
+
+.statNumber {
+  font-size: var(--font-size-4xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-accent);
+  line-height: 1;
+  margin-bottom: var(--space-1);
+}
+
+.statLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-fg-muted);
+  font-weight: var(--font-weight-medium);
+  text-transform: uppercase;
+  letter-spacing: var(--letter-spacing-wide);
+}
+
+.ticketMessage {
+  color: var(--color-fg-subtle);
+  margin: 0;
+  font-style: italic;
+}
+
+/* ===== CARD ACTIONS ===== */
+.cardActions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-6);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--color-border);
+}
+
+/* ===== ADMIN PANEL ===== */
+.adminDescription {
+  color: var(--color-fg-subtle);
+  margin-bottom: var(--space-6);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-relaxed);
+}
+
+.adminActions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.adminFeatures {
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--color-border);
+}
+
+.featuresTitle {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-fg);
+  margin-bottom: var(--space-4);
+}
+
+.featuresList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.featuresList li {
+  color: var(--color-fg-subtle);
+  font-size: var(--font-size-sm);
+  padding: var(--space-2) 0;
+}
+
+/* ===== EMPTY STATE ===== */
+.emptyState {
+  text-align: center;
+  color: var(--color-fg-muted);
+  font-style: italic;
+  padding: var(--space-8);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .container {
+    padding-top: calc(64px + var(--space-6));
+    padding-bottom: var(--space-8);
+  }
+  
+  .header {
+    margin-bottom: var(--space-8);
+  }
+  
+  .title {
+    font-size: var(--font-size-3xl);
+  }
+  
+  .subtitle {
+    font-size: var(--font-size-base);
+  }
+  
+  .dashboardGrid {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+  
+  .cardHeader {
+    padding: var(--space-4) var(--space-4) 0;
+  }
+  
+  .cardContent {
+    padding: 0 var(--space-4) var(--space-4);
+  }
+  
+  .cardTitle {
+    font-size: var(--font-size-lg);
+  }
+  
+  .profileAvatar {
+    width: 40px;
+    height: 40px;
+    font-size: var(--font-size-lg);
+  }
+  
+  .adminActions {
+    gap: var(--space-2);
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboardGrid {
+    gap: var(--space-4);
+  }
+  
+  .infoItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-1);
+  }
+  
+  .statNumber {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+/* ===== REDUCED MOTION ===== */
+@media (prefers-reduced-motion: reduce) {
+  .loadingSpinner {
+    animation: none;
+  }
+  
+  .profileCard,
+  .ticketsCard,
+  .adminCard {
+    transition: none;
+  }
+  
+  .profileCard:hover,
+  .ticketsCard:hover,
+  .adminCard:hover {
+    transform: none;
+  }
+}
