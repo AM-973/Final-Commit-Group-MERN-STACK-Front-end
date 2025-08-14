@@ -36,7 +36,15 @@ const MovieDetails = (props) => {
 
   const handleAddReview = async (reviewFormData) => {
     const newReview = await movieService.createReview(reviewFormData, movieId)
-    setMovie({...movie, reviews: [...movie.reviews, newReview]})
+    
+    
+    const reviewWithUser = {
+      ...newReview,
+      user: newReview.user || props.user, // Fallback to current user if not populated
+      author: newReview.author || props.user // Alternative field name
+    }
+    
+    setMovie({...movie, reviews: [...movie.reviews, reviewWithUser]})
   }
 
   const handleDeleteReview = async(movieId, reviewId) => {
@@ -140,20 +148,24 @@ const MovieDetails = (props) => {
       <h2>Reviews</h2>
       {!movie.reviews?.length && <p>There are no reviews.</p>}
       {movie.reviews?.map((review) => {
-        const authorId = review.user._id
+  
+        const authorId = review.user?._id || review.author?._id || review.userId
+        const authorUsername = review.user?.username || review.author?.username || 'Unknown'
+        
+
         
         return (
           <article key={review._id}>
             <header>
             <AuthorInfo content={review} />
-            {(authorId === props.user?._id) && (
+            {(authorId === props.user?._id || props.user?.isAdmin) && (
               <>
                 <Link to={`/movies/${movieId}/reviews/${review._id}/edit`}><Icon category="Edit" /></Link>
                 <button onClick={() => handleDeleteReview(movieId, review._id)}><Icon category="Trash" /></button>
               </>
             )}
             <p>Rating: {review.rating}/5</p>
-            <p>Reviewer: {review.user.username}</p>
+            <p>Reviewer: {authorUsername}</p>
             </header>
                           
             <p>{review.comment}</p>

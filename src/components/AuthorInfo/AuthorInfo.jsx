@@ -6,7 +6,8 @@ import Icon from '../Icon/Icon';
 
 const AuthorInfo = ({ content }) => {
 
-  const author = content.owner 
+  // Handle different data structures: movies use 'owner', reviews use 'user' or 'author'
+  const author = content.owner || content.user || content.author
   const authorName = author?.username
   
   return (

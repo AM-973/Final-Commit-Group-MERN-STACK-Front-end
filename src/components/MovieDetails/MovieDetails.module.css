@@ -52,22 +52,26 @@
   
   .container header button,
   .container header a {
-    width: 30px;
-    height: 30px;
+    width: 32px;
+    height: 32px;
   
     font-size: 14px;
     font-weight: 500;
   
-    background: none;
-    border-radius: 50%;
-    border: 1px solid var(--border);
+    background: var(--color-bg-elevated);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--color-border);
+    color: var(--color-fg-muted);
+    text-decoration: none;
   
     display: flex;
     align-items: center;
     justify-content: center;
   
-    padding: 5px;
-    margin: 0 0 0 7px;
+    padding: 0;
+    margin: 0 0 0 var(--space-2);
+    transition: var(--transition-all);
+    cursor: pointer;
   }
   
   /* Button icon styling */
@@ -77,22 +81,34 @@
   .container header a img {
     width: 24px;
     height: 24px;
-    opacity: 0.25;
+    opacity: 1;
+    filter: brightness(0) saturate(100%) invert(69%) sepia(25%) saturate(1000%) hue-rotate(315deg) brightness(95%) contrast(85%);
   }
   
   .container header button:hover,
   .container header a:hover {
-    background-color: var(--border);
+    background-color: var(--color-accent-subtle);
+    border-color: var(--color-accent);
   }
   
   .container header button:hover img,
   .container header a:hover img {
-    filter: invert(1);
+    filter: brightness(0) saturate(100%) invert(27%) sepia(51%) saturate(2878%) hue-rotate(346deg) brightness(104%) contrast(97%);
     opacity: 1;
   }
   
   .container header button:active {
-    background-color: rgb(190, 190, 190);
+    background-color: var(--color-accent-subtle);
+  }
+  
+  /* Special styling for delete buttons */
+  .container header button:last-child:hover {
+    background-color: var(--color-danger-subtle);
+    border-color: var(--color-danger);
+  }
+  
+  .container header button:last-child:hover img {
+    filter: brightness(0) saturate(100%) invert(13%) sepia(94%) saturate(7151%) hue-rotate(3deg) brightness(90%) contrast(118%);
   }
   
   /* Comment form styling */
